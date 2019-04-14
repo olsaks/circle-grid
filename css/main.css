@@ -39,10 +39,13 @@ body {
 
 /* CIRCLE SPECIFIC STYLES */
 .circle {
-  border: 0.5vw solid #ffcfa4;
-}
-.circle {
   cursor: grab;
+  border: 0.5vw solid #ffcfa4;
+  transition: transform 0.2s ease;
+}
+.circle:not(.wobble):hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
 }
 .circle.wobble {
   animation: shake 1s ease infinite;
@@ -73,24 +76,11 @@ body {
 
 /* ANIMATION */
 @keyframes shake {
-  10%,
-  90% {
-    transform: translateX(-1px);
+  0% {
+    transform: scale(1);
   }
 
-  20%,
-  80% {
-    transform: translateX(1px);
-  }
-
-  30%,
-  50%,
-  70% {
-    transform: translateX(-2px);
-  }
-
-  40%,
-  60% {
-    transform: translateX(2px);
+  50% {
+    transform: scale(1.1);
   }
 }
