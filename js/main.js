@@ -24,7 +24,9 @@ class App {
 
     for (App.circle of App.circles) {
       App.circle.addEventListener("dragstart", App.dragstart);
+      App.circle.addEventListener("touchstart", App.dragstart);
       App.circle.addEventListener("dragend", App.dragend);
+      App.circle.addEventListener("touchend", App.dragend);
     }
 
     App.dragged;
