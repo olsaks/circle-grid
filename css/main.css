@@ -10,6 +10,7 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
+  background: #33302c;
 }
 
 /* GRID STYLES */
@@ -27,10 +28,15 @@ body {
   width: 4vw;
   height: 4vw;
   border-radius: 50%;
-  border: 3px solid black;
   min-width: 30px;
   min-height: 30px;
-  margin: 3px;
+  margin: 5px;
+}
+.circle {
+  border: 0.5vw solid #ffcfa4;
+}
+.container.inactive {
+  border: 3px solid white;
 }
 .container.active {
   border: none;
@@ -39,18 +45,19 @@ body {
   cursor: grab;
 }
 .container.active .circle {
-  border-color: red;
+  /* box-shadow: 0 0 10px #ffcfa4, 0px 0 5px #ffce87, 0px 0px 5px #ffc5a9; */
+  box-shadow: 2px 2px 15px #ffc5a9;
 }
 .container.inactive {
   opacity: 0;
   /* transition: opacity 0.1s ease; */
 }
 .container.inactive.visible {
-  opacity: 0.5;
+  opacity: 1;
   /* transition: opacity 0.1s ease; */
 }
 .container.hovered {
-  border: 3px dotted black;
+  border: 3px dotted white;
 }
 .container.active {
   border: none;
