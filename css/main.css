@@ -32,29 +32,37 @@ body {
   min-height: 30px;
   margin: 5px;
 }
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* CIRCLE SPECIFIC STYLES */
 .circle {
   border: 0.5vw solid #ffcfa4;
 }
+.circle {
+  cursor: grab;
+}
+.circle.wobble {
+  animation: shake 1s ease infinite;
+}
+.container.active .circle {
+  box-shadow: 2px 2px 15px #ffc5a9;
+}
+
+/* CONTAINER STATE STYLES */
 .container.inactive {
   border: 3px solid white;
 }
 .container.active {
   border: none;
 }
-.circle {
-  cursor: grab;
-}
-.container.active .circle {
-  /* box-shadow: 0 0 10px #ffcfa4, 0px 0 5px #ffce87, 0px 0px 5px #ffc5a9; */
-  box-shadow: 2px 2px 15px #ffc5a9;
-}
 .container.inactive {
   opacity: 0;
-  /* transition: opacity 0.1s ease; */
 }
 .container.inactive.visible {
   opacity: 1;
-  /* transition: opacity 0.1s ease; */
 }
 .container.hovered {
   border: 3px dotted white;
@@ -63,9 +71,26 @@ body {
   border: none;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-}
+/* ANIMATION */
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
 
-/* CIRCLE COLOR STYLES */
+  20%,
+  80% {
+    transform: translateX(1px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-2px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(2px);
+  }
+}
