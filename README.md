@@ -1,8 +1,8 @@
-## TO RUN
+## USAGE
 
-- Simply double click the index.html file to open it in a web browser
+- Simply double click the index.html file to open it in a web browser OR go to: https://olsaks.github.io/circle-grid/
 
-- OR go to: https://olsaks.github.io/circle-grid/
+- The user is intended to drag and drop these circles as they please. The first circle is "pulsing" to let the user know these can be interacted with. Create as many cool patterns as you can!
 
 ## PHOTO
 
