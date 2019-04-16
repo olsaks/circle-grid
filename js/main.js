@@ -1,69 +1,70 @@
 class App {
   static init() {
-    // const target = document.getElementById("circle-grid");
-    // console.log(target);
+    //  dynamicaly created circles with appropriate classnames,
+    // but couldnt get event listeners on them working in time...
 
-    // for (var i = 1; i < 11; i++) {
+    // const target = document.querySelector(".circle-grid");
+    // for (var i = 0; i < 10; i++) {
     //   var row = document.createElement("div");
     //   row.classList.add("row");
-    //   target.append(row);
-    //   for (var j = 1; j < 11; j++) {
+    //   for (var j = 0; j < 10; j++) {
     //     var container = document.createElement("div");
     //     container.classList.add("container");
-    //     row.append(container);
-    //     for (var k = 1; k < j + 1; k++) {
+    //     if (j <= i) {
     //       container.classList.add("active");
     //       var circle = document.createElement("div");
     //       circle.classList.add("circle");
+    //       if (i === 0) {
+    //         circle.classList.add("wobble");
+    //       }
     //       container.append(circle);
     //     }
+    //     row.append(container);
     //   }
+    //   target.append(row);
     // }
 
-    App.circles = document.getElementsByClassName("circle");
-
+    // get all circle elements and give them appropriate event listeners
+    App.circles = [...document.getElementsByClassName("circle")];
     for (App.circle of App.circles) {
       App.circle.addEventListener("dragstart", App.dragstart);
-      App.circle.addEventListener("touchstart", App.dragstart);
       App.circle.addEventListener("dragend", App.dragend);
-      App.circle.addEventListener("touchend", App.dragend);
     }
 
-    App.dragged;
-
-    App.containers = document.getElementsByClassName("container");
-    // console.log([...containers]);
-
+    // get all container elements and give them appropriate event listeners
+    App.containers = [...document.getElementsByClassName("container")];
     for (const container of App.containers) {
       container.addEventListener("dragover", App.dragover);
       container.addEventListener("dragenter", App.dragenter);
       container.addEventListener("dragleave", App.dragleave);
       container.addEventListener("drop", App.drop);
     }
+
+    App.dragged;
   }
 
   static dragstart() {
-    setTimeout(() => (this.className = "invisible"), 0);
-    App.dragged = this;
+    setTimeout(() => (this.className = "invisible"), 0); // hide circle you have just dragged
+    App.dragged = this; // set this circle to our dragged element so we can append this later
     for (const container of App.containers) {
-      container.classList.add("visible");
+      container.classList.add("visible"); // show white circle containers where user can place circle
     }
   }
 
   static dragend() {
-    this.className = "circle";
+    this.className = "circle"; // reassign cirle class to element to give circle styles
     for (const container of App.containers) {
-      container.classList.remove("visible");
+      container.classList.remove("visible"); // hide all containers since circle will be giving style
     }
-    App.dragged = undefined;
+    App.dragged = undefined; // set the dragged element back to initial state
   }
 
   static dragover(e) {
-    e.preventDefault();
+    e.preventDefault(); // need to prevent default behavior so drop function actually works
   }
 
   static dragenter(e) {
-    e.preventDefault();
+    e.preventDefault(); // need to prevent default behavior so drop function actually works
     this.classList.add("hovered"); //add hover state if circle is being dragged
   }
 
